@@ -69,8 +69,7 @@ function recreate_sentence(charIndex,retrievedWords,outsideSentence){
     while(i < oldLength){
         
         var currentLetterPosition = i
-     
-                
+                     
         if(charIndex.includes(currentLetterPosition) === false) {
   			
   			newSentence = newSentence + outsideSentence[i]
@@ -88,6 +87,31 @@ function recreate_sentence(charIndex,retrievedWords,outsideSentence){
 // // PART 2: write a function called capitalizeAll(). 
 // It should take as input a sentence and capitalize the first letter
 // of every word in the sentence. 
+function capitalizeAll(outsideSentence){
+    
+    var startOfWord = 0
+    var newSentence = ""
+    var i = 0
+    for (i=0; i < outsideSentence.length; i++){
+        
+        if (outsideSentence[i-1] === " " || i == 0){
+        	
+            newSentence = newSentence + outsideSentence[i].toUpperCase()
+        
+        }
+        
+        else{
+        	
+        	newSentence = newSentence + outsideSentence[i]
+            
+        }
+        
+    }
+    
+    return newSentence
+    
+}
+
 
 
 // // PART 3: write a function called properSentences(). It should take as input a string and capitalize the first letter of every sentence in that string. (For our purposes, all sentences will end with periods. Write one that works with ? and ! and receive a gratifying high five, right on the hand!)
