@@ -1,9 +1,86 @@
 // PART 0: Write a function called squareDance() that squares each number in an array.
+function squareDance(outsideArray){
 
+	var i = 0
+	var squared = []
+
+	for(i=0; i < outsideArray.length; i++){
+
+		squared.push(outsideArray[i]*outsideArray[i])
+
+	}
+
+	return squared 
+
+}
 
 // PART 1: write a function called nicer(). 
 // It should clean up the language in its input sentence. 
 // Forbidden words include heck, dang, crappy, and dang.
+function nicer(outsideSentence){
+	
+	var retrievedWords = ""
+    var charIndex = []
+	var forbiddenWords = ["heck", "dang", "darn", "crappy"]
+	
+    var i = 0
+    
+	for(i = 0; i < forbiddenWords.length; i++){
+
+		var currentBadWord = forbiddenWords[i]
+
+		if (outsideSentence.includes(currentBadWord)){
+
+			var startBadWord = outsideSentence.indexOf(currentBadWord)
+			var lengthBadWord = currentBadWord.length
+			
+            var j = 0
+			for(j = 0; j < lengthBadWord; j++){
+
+				var letter = " "
+				letter = outsideSentence[startBadWord+j]
+
+                if (typeof letter === "string"){             
+					var result = letter
+                    retrievedWords = retrievedWords + letter
+                    charIndex.push(j+startBadWord)
+                                       				
+                }				
+			}
+            
+            retrievedWords = retrievedWords + " "
+            
+			console.log(retrievedWords)            
+                                
+		}
+	}
+    
+    return recreate_sentence(charIndex,retrievedWords,outsideSentence)
+}
+
+function recreate_sentence(charIndex,retrievedWords,outsideSentence){
+    
+    var oldLength = outsideSentence.length
+    var replaced = []
+    var newSentence = ""
+    var i = 0
+   
+    while(i < oldLength){
+        
+        var currentLetterPosition = i
+                     
+        if(charIndex.includes(currentLetterPosition) === false) {
+  			
+  			newSentence = newSentence + outsideSentence[i]
+                              
+        }
+                           
+    	i = i + 1    
+    }
+
+    return newSentence.replace(new RegExp("  ", 'g'), " ")
+
+}
 
 
 // // PART 2: write a function called capitalizeAll(). 
